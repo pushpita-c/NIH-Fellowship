@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NIH PhD Fellowship Hub — Meharry School of Applied Computational Sciences</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:    #012169;
+  --navy-dk: #001040;
+  --navy-md: #1B3A8C;
+  --navy-sf: #E8EDF7;
+  --gold:    #C49A06;
+  --gold-lt: #E8B800;
+  --gold-pl: #FBF5DC;
+  --gold-bd: #E0C870;
+  --f31:     #155E9A;
+  --f31-lt:  #EEF4FB;
+  --f31-bd:  #9EC5E8;
+  --gpp:     #0C6478;
+  --gpp-lt:  #EDF7F9;
+  --gpp-bd:  #7DD3E0;
+  --f30:     #5B21B6;
+  --f30-lt:  #F4F0FD;
+  --f30-bd:  #BFA8ED;
+  --f99:     #0F6B4A;
+  --f99-lt:  #EDFAF4;
+  --f99-bd:  #6EE7B7;
+  --warn:    #C45300;
+  --warn-lt: #FFF7ED;
+  --warn-bd: #FBB97A;
+  --white:   #FFFFFF;
+  --fog:     #F7F8FC;
+  --text:    #111827;
+  --text-m:  #374151;
+  --text-s:  #6B7280;
+  --border:  #D1D9EC;
+  --grn:     #0D6E4A;
+  --grn-bg:  #ECFDF5;
+  --grn-bd:  #6EE7B7;
+  --r:  4px;
+  --rm: 8px;
+  --sh: 0 1px 3px rgba(1,33,105,.07), 0 4px 12px rgba(1,33,105,.05);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;font-size:16px;line-height:1.65;color:var(--text);background:var(--white)}
+
+/* ALERT BANNER */
+.alert{background:var(--warn);padding:.48rem 1.5rem}
+.alert-in{max-width:1120px;margin:0 auto;display:flex;align-items:center;gap:.75rem;flex-wrap:wrap}
+.alert span{font-size:.79rem;font-weight:600;color:#FFF;line-height:1.4}
+.alert a{color:#FFE0B2;font-weight:700;text-decoration:underline}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:var(--navy-dk);border-bottom:2px solid var(--gold)}
+.nav-in{max-width:1120px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:54px}
+.nav-brand{display:flex;align-items:center;gap:.65rem;text-decoration:none}
+.nav-m{width:32px;height:32px;background:var(--gold);color:var(--navy-dk);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:800;font-size:1rem;border-radius:2px;flex-shrink:0}
+.nav-lbl{color:var(--white);font-size:.82rem;font-weight:600;line-height:1.3}
+.nav-sub{color:rgba(255,255,255,.4);font-size:.68rem}
+.nav-links{display:flex;list-style:none}
+.nav-links a{color:rgba(255,255,255,.62);text-decoration:none;font-size:.76rem;font-weight:500;padding:.28rem .5rem;border-radius:var(--r);transition:color .12s,background .12s}
+.nav-links a:hover{color:var(--gold-lt);background:rgba(255,255,255,.07)}
+
+/* HERO */
+.hero{background:var(--navy-dk);padding:4.5rem 1.5rem 4rem;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 75% 20%,rgba(196,154,6,.13) 0%,transparent 55%);pointer-events:none}
+.hero::before{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.hero-in{max-width:1120px;margin:0 auto;position:relative;z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:.4rem;background:rgba(196,154,6,.16);border:1px solid rgba(196,154,6,.32);color:var(--gold-lt);font-size:.72rem;font-weight:600;letter-spacing:.06em;padding:.28rem .75rem;border-radius:99px;margin-bottom:1.4rem}
+.hero h1{font-family:'Playfair Display',serif;font-weight:800;font-size:clamp(2rem,4.5vw,3rem);color:var(--white);line-height:1.15;margin-bottom:1rem}
+.hero h1 em{font-style:normal;color:var(--gold-lt)}
+.hero-lead{font-size:1rem;color:rgba(255,255,255,.68);max-width:640px;margin-bottom:2rem;line-height:1.75}
+.prog-strip{display:flex;gap:.75rem;flex-wrap:wrap;margin-bottom:2rem}
+.prog-chip{display:inline-flex;align-items:center;gap:.35rem;padding:.35rem .75rem;border-radius:99px;font-size:.77rem;font-weight:700;text-decoration:none;border:1px solid;transition:opacity .12s}
+.prog-chip:hover{opacity:.82}
+.pc-f31{background:rgba(21,94,154,.25);border-color:rgba(21,94,154,.5);color:#A8D0F0}
+.pc-gpp{background:rgba(12,100,120,.25);border-color:rgba(12,100,120,.5);color:#8ED8E8}
+.pc-f30{background:rgba(91,33,182,.25);border-color:rgba(91,33,182,.5);color:#C4AAED}
+.pc-f99{background:rgba(15,107,74,.25);border-color:rgba(15,107,74,.5);color:#6EE7B7}
+.pc-ds{background:rgba(196,83,0,.25);border-color:rgba(196,83,0,.5);color:#FBB97A}
+.ctas{display:flex;gap:.65rem;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:.35rem;padding:.58rem 1.1rem;border-radius:var(--r);font-size:.86rem;font-weight:600;text-decoration:none;border:none;cursor:pointer;transition:all .13s}
+.btn-gold{background:var(--gold);color:var(--navy-dk)}.btn-gold:hover{background:var(--gold-lt)}
+.btn-ghost{background:transparent;border:1.5px solid rgba(255,255,255,.26);color:var(--white)}.btn-ghost:hover{border-color:var(--gold);color:var(--gold-lt)}
+
+/* SHARED */
+section{padding:4rem 1.5rem}
+.wrap{max-width:1120px;margin:0 auto}
+.lbl{font-size:.7rem;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.5rem}
+.sh{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(1.4rem,2.8vw,1.9rem);color:var(--navy);line-height:1.25;margin-bottom:.65rem}
+.sub{font-size:.95rem;color:var(--text-m);max-width:680px;line-height:1.75;margin-bottom:2rem}
+.bg-fog{background:var(--fog)}
+.bg-navy{background:var(--navy-dk)}
+.bg-navy .sh,.bg-navy h2{color:var(--white)}
+.bg-navy .sub,.bg-navy p{color:rgba(255,255,255,.65)}
+.bg-navy .lbl{color:var(--gold-lt)}
+
+/* PROGRAM CARDS AT A GLANCE */
+.prog-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:.85rem}
+.prog-card{border-radius:var(--rm);overflow:hidden;box-shadow:var(--sh)}
+.prog-head{padding:.85rem 1rem;font-size:.78rem;font-weight:700;color:#FFF;line-height:1.35}
+.prog-head.f31{background:var(--f31)}
+.prog-head.gpp{background:var(--gpp)}
+.prog-head.f30{background:var(--f30)}
+.prog-head.f99{background:var(--f99)}
+.prog-head.ds{background:var(--warn)}
+.prog-body{background:var(--white);border:1px solid var(--border);border-top:none;padding:.85rem 1rem}
+.prog-body .label{font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-s);margin-bottom:.2rem}
+.prog-body .val{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--text);line-height:1;margin-bottom:.5rem}
+.prog-body p{font-size:.77rem;color:var(--text-m);line-height:1.5}
+.prog-tag{display:inline-block;font-size:.64rem;font-weight:600;padding:.06rem .38rem;border-radius:3px;margin-bottom:.4rem}
+.pt-f31{background:var(--f31-lt);color:var(--f31)}
+.pt-gpp{background:var(--gpp-lt);color:var(--gpp)}
+.pt-f30{background:var(--f30-lt);color:var(--f30)}
+.pt-f99{background:var(--f99-lt);color:var(--f99)}
+.pt-ds{background:var(--warn-lt);color:var(--warn)}
+
+/* WARNING NOTICE */
+.warn-box{background:var(--warn-lt);border:1.5px solid var(--warn-bd);border-left:4px solid var(--warn);border-radius:0 var(--rm) var(--rm) 0;padding:1rem 1.25rem;font-size:.86rem;color:#7C2D12;line-height:1.65;margin-bottom:1.5rem}
+.warn-box strong{color:#9A3412}
+.info-box{background:var(--navy-sf);border:1px solid var(--border);border-left:4px solid var(--navy);border-radius:0 var(--rm) var(--rm) 0;padding:1rem 1.25rem;font-size:.86rem;color:var(--navy);line-height:1.65;margin-top:1.25rem}
+
+/* CHOOSER */
+.chooser-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem}
+.chooser-card{background:var(--white);border:1px solid var(--border);border-radius:var(--rm);padding:1.25rem;box-shadow:var(--sh)}
+.chooser-q{font-size:.8rem;font-weight:600;color:var(--text-s);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.5rem}
+.chooser-card h3{font-size:.95rem;font-weight:700;color:var(--navy);margin-bottom:.5rem}
+.chooser-card p{font-size:.83rem;color:var(--text-m);line-height:1.55;margin-bottom:.65rem}
+.chooser-badge{display:inline-flex;align-items:center;gap:.3rem;font-size:.75rem;font-weight:700;padding:.2rem .55rem;border-radius:99px}
+.cb-f31{background:var(--f31-lt);color:var(--f31)}
+.cb-gpp{background:var(--gpp-lt);color:var(--gpp)}
+.cb-f30{background:var(--f30-lt);color:var(--f30)}
+.cb-f99{background:var(--f99-lt);color:var(--f99)}
+.cb-ds{background:var(--warn-lt);color:var(--warn)}
+.cb-both{background:var(--navy-sf);color:var(--navy)}
+
+/* SECTION TABS (F31 deep dive) */
+.sec-tabs-nav{display:flex;border-bottom:2px solid var(--border);margin-bottom:1.75rem;flex-wrap:wrap}
+.sec-tab{padding:.6rem 1.05rem;border:none;background:transparent;font-family:'Inter',sans-serif;font-size:.83rem;font-weight:600;color:var(--text-s);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;transition:all .12s;white-space:nowrap}
+.sec-tab:hover{color:var(--f31)}
+.sec-tab.active{color:var(--f31);border-bottom-color:var(--f31)}
+.sec-pane{display:none}
+.sec-pane.active{display:block}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem}
+.tip-card{background:var(--white);border:1px solid var(--border);border-radius:var(--rm);padding:1.25rem;box-shadow:var(--sh)}
+.tip-card h3{font-size:.9rem;font-weight:700;color:var(--navy);margin-bottom:.75rem;padding-bottom:.65rem;border-bottom:1px solid var(--border)}
+.tip-list{list-style:none}
+.tip-list li{font-size:.83rem;color:var(--text-m);padding:.42rem 0 .42rem 1.1rem;position:relative;border-bottom:1px solid var(--fog);line-height:1.55}
+.tip-list li:last-child{border-bottom:none}
+.tip-list li::before{content:'•';position:absolute;left:0;color:var(--gold);font-weight:700}
+.tip-list li strong{color:var(--navy)}
+.step-list{list-style:none;counter-reset:st}
+.step-list li{counter-increment:st;font-size:.83rem;color:var(--text-m);padding:.52rem 0 .52rem 2.1rem;border-bottom:1px solid var(--fog);position:relative;line-height:1.55}
+.step-list li:last-child{border-bottom:none}
+.step-list li::before{content:counter(st);position:absolute;left:0;top:.48rem;width:1.3rem;height:1.3rem;background:var(--navy);color:var(--white);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.64rem;font-weight:700}
+.step-list li strong{color:var(--navy)}
+.pg-tag{display:inline-block;font-size:.63rem;font-weight:600;background:var(--navy-sf);color:var(--navy);padding:.06rem .34rem;border-radius:3px;margin-left:.2rem}
+
+/* SCORE CRITERIA GRID */
+.criteria-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:.75rem;margin:1.25rem 0}
+.crit-card{border-radius:var(--rm);overflow:hidden;box-shadow:var(--sh)}
+.crit-head{background:var(--f31);color:#FFF;padding:.65rem .75rem;font-size:.72rem;font-weight:700;text-align:center;border-bottom:2px solid #7EB8E0}
+.crit-body{background:var(--white);border:1px solid var(--f31-bd);border-top:none;padding:.65rem .75rem;text-align:center;font-size:.77rem;color:var(--text-m);line-height:1.45}
+.crit-note{font-size:.84rem;color:var(--text-m);line-height:1.7;background:var(--f31-lt);border:1px solid var(--f31-bd);border-radius:var(--rm);padding:.9rem 1.1rem}
+
+/* BUDGET TABLE */
+.budget-table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.84rem}
+.budget-table th{background:var(--navy);color:#FFF;padding:.55rem .85rem;text-align:left;font-weight:600;font-size:.77rem}
+.budget-table td{padding:.52rem .85rem;border-bottom:1px solid var(--border);color:var(--text-m)}
+.budget-table tr:last-child td{border-bottom:none}
+.budget-table tr:nth-child(odd) td{background:var(--fog)}
+.budget-table .val{font-weight:700;color:var(--navy)}
+
+/* COMPARISON TABLE */
+.comp-table{width:100%;border-collapse:collapse;font-size:.83rem;margin:1.25rem 0}
+.comp-table th{padding:.6rem .75rem;font-size:.72rem;font-weight:700;text-align:left;border-bottom:2px solid var(--border)}
+.comp-table td{padding:.52rem .75rem;border-bottom:1px solid var(--border);color:var(--text-m);vertical-align:top;line-height:1.5}
+.comp-table tr:last-child td{border-bottom:none}
+.comp-table tr:hover td{background:var(--fog)}
+.comp-table .row-lbl{font-weight:600;color:var(--text);white-space:nowrap}
+.comp-table .col-f31{color:var(--f31);font-weight:600}
+.comp-table .col-gpp{color:var(--gpp);font-weight:600}
+.comp-table .col-f99{color:var(--f99);font-weight:600}
+.comp-table .col-grfp{color:var(--navy);font-weight:600}
+.th-f31{border-top:3px solid var(--f31)}
+.th-gpp{border-top:3px solid var(--gpp)}
+.th-f99{border-top:3px solid var(--f99)}
+.th-grfp{border-top:3px solid var(--navy)}
+
+/* GPP SECTION */
+.gpp-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.gpp-card{border-radius:var(--rm);overflow:hidden;box-shadow:var(--sh)}
+.gpp-head{background:var(--gpp);color:#FFF;padding:1.05rem 1.3rem}
+.gpp-head h3{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;margin-bottom:.25rem}
+.gpp-head p{font-size:.79rem;color:rgba(255,255,255,.75);line-height:1.45}
+.gpp-body{background:var(--white);border:1px solid var(--gpp-bd);border-top:none;padding:1.1rem 1.3rem}
+.gpp-rows{list-style:none}
+.gpp-rows li{display:flex;gap:.75rem;padding:.45rem 0;border-bottom:1px solid var(--border);font-size:.82rem}
+.gpp-rows li:last-child{border-bottom:none}
+.gpp-rows li .r-lbl{font-weight:600;color:var(--text);flex-shrink:0;min-width:110px}
+.gpp-rows li .r-val{color:var(--text-m);line-height:1.45}
+.gpp-benefit{display:grid;grid-template-columns:1fr 1fr;gap:.65rem;margin-top:.85rem}
+.gpp-b{background:var(--gpp-lt);border-radius:var(--r);padding:.65rem .75rem;font-size:.79rem;color:var(--gpp);line-height:1.45}
+.gpp-b strong{display:block;font-weight:600;margin-bottom:.12rem}
+
+/* OTHER PROGRAMS */
+.oth-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+.oth-card{border-radius:var(--rm);overflow:hidden;box-shadow:var(--sh)}
+.oth-head{padding:1rem 1.25rem;color:#FFF}
+.oth-head.f30{background:var(--f30)}
+.oth-head.f99{background:var(--f99)}
+.oth-head h3{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;margin-bottom:.25rem}
+.oth-head p{font-size:.77rem;color:rgba(255,255,255,.78);line-height:1.4}
+.oth-body{background:var(--white);border:1px solid var(--border);border-top:none;padding:1rem 1.25rem}
+.oth-body .detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:.55rem;margin-bottom:.75rem}
+.oth-detail{background:var(--fog);border-radius:var(--r);padding:.55rem .65rem;font-size:.77rem}
+.oth-detail strong{display:block;font-weight:600;color:var(--text);margin-bottom:.1rem}
+.oth-detail span{color:var(--text-m)}
+.oth-body ul{list-style:none;margin-top:.5rem}
+.oth-body ul li{font-size:.8rem;color:var(--text-m);padding:.3rem 0 .3rem .9rem;position:relative;border-bottom:1px solid var(--fog);line-height:1.45}
+.oth-body ul li:last-child{border-bottom:none}
+.oth-body ul li::before{content:'→';position:absolute;left:0;color:var(--text-s);font-size:.75rem}
+
+/* PITFALL CARDS */
+.pf-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.85rem}
+.pf-card{background:var(--white);border:1px solid var(--border);border-left:3px solid #DC2626;border-radius:0 var(--rm) var(--rm) 0;padding:1rem 1.1rem;box-shadow:var(--sh)}
+.pf-num{display:inline-block;background:#FEE2E2;color:#991B1B;font-size:.68rem;font-weight:700;padding:.08rem .38rem;border-radius:3px;margin-bottom:.35rem}
+.pf-card h3{font-size:.868rem;font-weight:700;color:var(--text);margin-bottom:.32rem}
+.pf-card p{font-size:.8rem;color:var(--text-m);line-height:1.52}
+
+/* MEHARRY ADVANTAGE */
+.adv{background:var(--gold);background-image:radial-gradient(ellipse at 8% 50%,rgba(255,255,255,.14) 0%,transparent 55%)}
+.adv .lbl{color:rgba(0,16,64,.5)}
+.adv .sh{color:var(--navy-dk)}
+.adv .sub{color:rgba(0,0,0,.62)}
+.pil-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;margin-bottom:1.25rem}
+.pil{background:rgba(255,255,255,.22);border:1px solid rgba(255,255,255,.32);border-radius:var(--rm);padding:1.25rem}
+.pil-ico{font-size:1.5rem;margin-bottom:.55rem}
+.pil h3{font-size:.9rem;font-weight:700;color:var(--navy-dk);margin-bottom:.35rem}
+.pil p{font-size:.82rem;color:rgba(0,0,0,.68);line-height:1.6}
+.adv-q{background:rgba(255,255,255,.26);border-left:4px solid var(--navy);border-radius:0 var(--rm) var(--rm) 0;padding:1.05rem 1.25rem;font-size:.88rem;color:var(--navy-dk);line-height:1.7;font-style:italic}
+.adv-q strong{font-style:normal}
+
+/* TIMELINE */
+.tl{position:relative;margin-top:.5rem}
+.tl::before{content:'';position:absolute;left:100px;top:0;bottom:0;width:2px;background:var(--border)}
+.tl-row{display:flex;gap:1.5rem;margin-bottom:1.5rem;position:relative}
+.tl-dt{width:92px;flex-shrink:0;text-align:right;font-size:.73rem;font-weight:700;color:var(--text-s);padding-top:.12rem;line-height:1.4}
+.tl-dot{position:relative;flex-shrink:0;width:17px;height:17px;margin-top:.12rem;z-index:1}
+.tl-dot::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:10px;height:10px;border-radius:50%;background:var(--navy);border:2px solid var(--white);box-shadow:0 0 0 2px var(--navy)}
+.tl-dot.gld::after{background:var(--gold);box-shadow:0 0 0 2px var(--gold)}
+.tl-dot.red::after{background:#DC2626;box-shadow:0 0 0 2px #DC2626}
+.tl-box{flex:1;background:var(--white);border:1px solid var(--border);border-radius:var(--rm);padding:.85rem 1.05rem;box-shadow:var(--sh)}
+.tl-box.hi{border-color:var(--gold);border-width:1.5px}
+.tl-box h3{font-size:.88rem;font-weight:700;color:var(--navy);margin-bottom:.25rem}
+.tl-box p{font-size:.79rem;color:var(--text-m);line-height:1.52}
+.tl-tag{display:inline-block;font-size:.63rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;padding:.06rem .38rem;border-radius:3px;margin-bottom:.3rem}
+.tl-tag.act{background:var(--navy-sf);color:var(--navy)}
+.tl-tag.dl{background:#FEF3C7;color:#92400E}
+.tl-tag.sub{background:#FEE2E2;color:#991B1B}
+.tl-tag.f31c{background:var(--f31-lt);color:var(--f31)}
+.tl-tag.gppc{background:var(--gpp-lt);color:var(--gpp)}
+
+/* RESOURCES */
+.res-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.9rem}
+.res{display:block;background:var(--white);border:1px solid var(--border);border-radius:var(--rm);padding:1.05rem;text-decoration:none;box-shadow:var(--sh);transition:border-color .13s,transform .13s}
+.res:hover{border-color:var(--navy);transform:translateY(-2px)}
+.res h3{font-size:.84rem;font-weight:700;color:var(--navy);margin-bottom:.3rem}
+.res p{font-size:.77rem;color:var(--text-s);line-height:1.48}
+.res-tag{display:inline-block;font-size:.63rem;font-weight:600;background:var(--navy-sf);color:var(--navy);padding:.06rem .34rem;border-radius:3px;margin-bottom:.4rem}
+
+/* CONTACT */
+.ct-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
+.ct-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:var(--rm);padding:1.25rem}
+.ct-card h3{font-size:.9rem;font-weight:700;color:var(--gold-lt);margin-bottom:.55rem}
+.ct-card p{font-size:.83rem;color:rgba(255,255,255,.68);line-height:1.6}
+.ct-card a{color:var(--gold-lt);text-decoration:none}
+.ct-card a:hover{text-decoration:underline}
+
+/* FOOTER */
+footer{background:var(--navy-dk);border-top:1px solid rgba(255,255,255,.09);padding:1.25rem 1.5rem;text-align:center;font-size:.77rem;color:rgba(255,255,255,.36)}
+footer a{color:rgba(255,255,255,.5);text-decoration:none}
+footer a:hover{color:var(--gold-lt)}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .nav-links{display:none}
+  .prog-grid{grid-template-columns:1fr 1fr}
+  .chooser-grid,.gpp-grid,.oth-grid,.two-col,.three-col,.pil-grid,.ct-grid{grid-template-columns:1fr}
+  .res-grid{grid-template-columns:1fr 1fr}
+  .criteria-grid,.pf-grid{grid-template-columns:1fr 1fr}
+  .comp-table{font-size:.76rem}
+  .tl::before{left:68px}
+  .tl-dt{width:60px;font-size:.7rem}
+  .gpp-benefit,.oth-detail-grid{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<!-- ALERT BANNER -->
+<div class="alert">
+  <div class="alert-in">
+    <span>&#9888; <strong>Important 2025–2026 Note:</strong> NIH terminated a number of F31 and F31-Diversity grants in 2025. Some were later reinstated; the landscape is still evolving. Verify the current status of any FOA you plan to apply to at <a href="https://grants.nih.gov/grants/guide/" target="_blank">grants.nih.gov/grants/guide</a> before beginning your application.</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-in">
+    <a class="nav-brand" href="#">
+      <div class="nav-m">M</div>
+      <div>
+        <div class="nav-lbl">Meharry NIH Fellowship Hub</div>
+        <div class="nav-sub">School of Applied Computational Sciences</div>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#landscape">Programs</a></li>
+      <li><a href="#chooser">Which One?</a></li>
+      <li><a href="#f31">F31</a></li>
+      <li><a href="#gpp">GPP</a></li>
+      <li><a href="#other">F30 &amp; F99</a></li>
+      <li><a href="#comparison">Compare</a></li>
+      <li><a href="#writing">Writing Guide</a></li>
+      <li><a href="#advantage">Meharry Edge</a></li>
+      <li><a href="#timeline">Timeline</a></li>
+      <li><a href="#resources">Resources</a></li>
+      <li><a href="#help">Get Help</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-in">
+    <div class="hero-badge">&#127973; National Institutes of Health — PhD Fellowship Programs</div>
+    <h1>NIH Fellowship Guide<br>for <em>Meharry</em> PhD Students</h1>
+    <p class="hero-lead">From the F31 to the Graduate Partnerships Program — a complete, research-backed guide to every NIH PhD fellowship opportunity. Informed by official NIH sources, current FY2026 stipend tables, and expert application guidance. Built for Meharry.</p>
+    <div class="prog-strip">
+      <a href="#f31" class="prog-chip pc-f31">&#9679; F31 — Predoctoral NRSA</a>
+      <a href="#gpp" class="prog-chip pc-gpp">&#9679; GPP — NIH Intramural</a>
+      <a href="#other" class="prog-chip pc-f30">&#9679; F30 — MD/PhD</a>
+      <a href="#other" class="prog-chip pc-f99">&#9679; F99/K00 — Transition Award</a>
+      <a href="#other" class="prog-chip pc-ds">&#9679; Diversity Supplement</a>
+    </div>
+    <div class="ctas">
+      <a href="https://grants.nih.gov/funding/funding-categories/research-training-and-career-development/individual-fellowships" target="_blank" class="btn btn-gold">NIH Fellowship Portal &#8599;</a>
+      <a href="#f31" class="btn btn-ghost">Start with the F31</a>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAM LANDSCAPE -->
+<section class="bg-fog" id="landscape">
+  <div class="wrap">
+    <div class="lbl">At a Glance</div>
+    <h2 class="sh">The NIH PhD Fellowship Landscape</h2>
+    <p class="sub">NIH offers multiple pathways for PhD students to secure independent funding. Each program has a different purpose, timing, eligibility, and payoff. All amounts are FY2026 unless noted.</p>
+    <div class="prog-grid">
+      <div class="prog-card">
+        <div class="prog-head f31">F31 — Ruth L. Kirschstein NRSA Predoctoral Fellowship<br><small style="font-weight:400;opacity:.85">PA-25-422 · Most Common</small></div>
+        <div class="prog-body">
+          <div class="prog-tag pt-f31">Best for: PhD students yr 2–4</div>
+          <div class="label">FY2026 Stipend</div>
+          <div class="val">$29,364<span style="font-size:.85rem;font-weight:400;color:var(--text-s)">/yr</span></div>
+          <p>+ Tuition (60%, up to $16K) + $4,750 institutional allowance (non-Federal institutions). Up to 5 years. Extramural.</p>
+        </div>
+      </div>
+      <div class="prog-card">
+        <div class="prog-head gpp">GPP — Graduate Partnerships Program<br><small style="font-weight:400;opacity:.85">NIH Intramural · Highest Stipend</small></div>
+        <div class="prog-body">
+          <div class="prog-tag pt-gpp">Best for: Students wanting NIH lab access</div>
+          <div class="label">Starting Stipend</div>
+          <div class="val">$51,000<span style="font-size:.85rem;font-weight:400;color:var(--text-s)">/yr (Yr 1)</span></div>
+          <p>Yr 2: $55,954 | Yr 3: $57,873 | Yr 4–5: $59,893. + health insurance + $1,500 relocation. International (J-1) eligible.</p>
+        </div>
+      </div>
+      <div class="prog-card">
+        <div class="prog-head f30">F30 — MD/PhD &amp; Dual-Degree NRSA<br><small style="font-weight:400;opacity:.85">PA-25-423 · Dual-degree only</small></div>
+        <div class="prog-body">
+          <div class="prog-tag pt-f30">Best for: MD/PhD students</div>
+          <div class="label">FY2026 Stipend</div>
+          <div class="val">$29,364<span style="font-size:.85rem;font-weight:400;color:var(--text-s)">/yr</span></div>
+          <p>Same NRSA stipend + tuition. Up to 6 years total NRSA support. 50%+ must be research time.</p>
+        </div>
+      </div>
+      <div class="prog-card">
+        <div class="prog-head f99">F99/K00 — Predoc-to-Postdoc Transition<br><small style="font-weight:400;opacity:.85">PA-27-037 · Limited ICs</small></div>
+        <div class="prog-body">
+          <div class="prog-tag pt-f99">Best for: PhD students yr 3–5</div>
+          <div class="label">F99 Predoc / K00 Postdoc</div>
+          <div class="val" style="font-size:1.1rem">$29K / $75K<span style="font-size:.78rem;font-weight:400;color:var(--text-s)">/yr</span></div>
+          <p>Two-phase: 1–2 yrs dissertation + 3–4 yrs postdoc support. Up to 5 yrs total. Select ICs only.</p>
+        </div>
+      </div>
+      <div class="prog-card">
+        <div class="prog-head ds">Diversity Supplement<br><small style="font-weight:400;opacity:.85">PA-23-189 · Admin Supplement</small></div>
+        <div class="prog-body">
+          <div class="prog-tag pt-ds">Best for: Students joining a PI's lab</div>
+          <div class="label">Stipend</div>
+          <div class="val">NRSA<span style="font-size:.85rem;font-weight:400;color:var(--text-s)"> levels</span></div>
+          <p>PI applies, not student. Attached to existing NIH grant. Covers stipend + training costs. For underrepresented groups.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHOOSER -->
+<section id="chooser">
+  <div class="wrap">
+    <div class="lbl">Decision Guide</div>
+    <h2 class="sh">Which Program Is Right for You?</h2>
+    <p class="sub">Answer the questions below to identify your best starting point. Most students should pursue multiple programs sequentially — you cannot hold them simultaneously.</p>
+    <div class="chooser-grid">
+      <div class="chooser-card">
+        <div class="chooser-q">If you are in a single PhD program</div>
+        <h3>PhD-Only Path</h3>
+        <p>The F31 is your primary target. Apply in years 2–4, after passing qualifying exams. If you're in years 3–5 and can articulate a postdoc plan, also consider the F99/K00. Both require US citizenship or permanent residency.</p>
+        <span class="chooser-badge cb-f31">&#10140; F31</span>&nbsp;<span class="chooser-badge cb-f99">&#10140; F99/K00</span>
+      </div>
+      <div class="chooser-card">
+        <div class="chooser-q">If you are in an MD/PhD or dual-degree program</div>
+        <h3>Dual-Degree Path</h3>
+        <p>Apply for the F30, designed specifically for MD/PhD students. Must apply within 48 months of matriculation and no later than 24 months into your dissertation research. Your program must have a clear integration of clinical and research training.</p>
+        <span class="chooser-badge cb-f30">&#10140; F30</span>
+      </div>
+      <div class="chooser-card">
+        <div class="chooser-q">If you want to conduct dissertation research at NIH</div>
+        <h3>NIH Intramural Path</h3>
+        <p>The Graduate Partnerships Program (GPP) lets you do your dissertation research in an NIH lab while remaining enrolled at your home university. The stipend is substantially higher than the F31. International students (J-1) may be eligible — unlike the F31.</p>
+        <span class="chooser-badge cb-gpp">&#10140; GPP</span>
+      </div>
+      <div class="chooser-card">
+        <div class="chooser-q">If your advisor has an active NIH grant</div>
+        <h3>Diversity Supplement Path</h3>
+        <p>Your PI can apply for a diversity supplement to their existing NIH award, adding you as a funded trainee. This is often faster and more accessible than an individual fellowship. You must be from an underrepresented group. Your PI initiates the application.</p>
+        <span class="chooser-badge cb-ds">&#10140; Diversity Supplement</span>
+      </div>
+      <div class="chooser-card">
+        <div class="chooser-q">If you are an international student</div>
+        <h3>International Student Path</h3>
+        <p>The F31, F30, and F99/K00 are limited to US citizens and permanent residents. However, the GPP is open to international students on J-1 visas. The diversity supplement may also be available depending on your background and your PI's eligibility.</p>
+        <span class="chooser-badge cb-gpp">&#10140; GPP</span>&nbsp;<span class="chooser-badge cb-ds">&#10140; Diversity Supp.</span>
+      </div>
+      <div class="chooser-card">
+        <div class="chooser-q">Can you hold multiple awards?</div>
+        <h3>Sequential Strategy</h3>
+        <p>You cannot hold an NRSA fellowship (F31, F30) simultaneously with the F99/K00. But you can hold them sequentially: F31 first, then use F99/K00 for your final years and postdoc. Apply for the NSF GRFP early (before or during year 1), then the F31 in years 2–3.</p>
+        <span class="chooser-badge cb-both">F31 → F99/K00 (sequential)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- F31 DEEP DIVE -->
+<section class="bg-fog" id="f31">
+  <div class="wrap">
+    <div class="lbl">Primary Fellowship</div>
+    <h2 class="sh" style="color:var(--f31)">F31 — Ruth L. Kirschstein Predoctoral Fellowship</h2>
+    <p class="sub">The most common NIH fellowship for PhD students. Funds dissertation research under a named faculty sponsor. Having an F31 on your CV signals to postdoc supervisors and search committees that your work survived independent peer review before you finished your degree.</p>
+
+    <div class="sec-tabs-nav">
+      <button class="sec-tab active" onclick="stab('overview',this)">Overview &amp; Budget</button>
+      <button class="sec-tab" onclick="stab('elig',this)">Eligibility &amp; Deadlines</button>
+      <button class="sec-tab" onclick="stab('components',this)">Application Components</button>
+      <button class="sec-tab" onclick="stab('scoring',this)">Review &amp; Scoring</button>
+      <button class="sec-tab" onclick="stab('writing',this)">Writing Strategies</button>
+      <button class="sec-tab" onclick="stab('mistakes',this)">Common Mistakes</button>
+    </div>
+
+    <!-- TAB: OVERVIEW -->
+    <div class="sec-pane active" id="tab-overview">
+      <div class="two-col">
+        <div>
+          <div class="tip-card" style="margin-bottom:1.1rem">
+            <h3>What the F31 pays — FY2026 budget</h3>
+            <table class="budget-table">
+              <thead><tr><th>Component</th><th>Amount (FY2026)</th><th>Notes</th></tr></thead>
+              <tbody>
+                <tr><td>Stipend</td><td class="val">$29,364/year</td><td>Living allowance; not salary. Taxable but no FICA. Set annually by NIH NOT-OD-26-044.</td></tr>
+                <tr><td>Tuition &amp; fees</td><td class="val">Up to $16,000/year</td><td>Covers 60% of actual tuition; NIH pays the cap or 60%, whichever is less. Many programs waive tuition for funded students.</td></tr>
+                <tr><td>Institutional allowance</td><td class="val">$4,750/year</td><td>For non-Federal institutions like Meharry (per NOT-OD-26-044). Federal/for-profit host institutions: $3,650/yr. Covers health insurance, supplies, conference travel — institution allocates.</td></tr>
+                <tr><td>Total value</td><td class="val">~$50,114/year</td><td>Stipend + institutional allowance + tuition coverage. Per NOT-OD-26-044 (FY2026, effective Oct 1, 2025).</td></tr>
+                <tr><td>Duration</td><td class="val">Up to 5 years</td><td>Total NRSA predoctoral support capped at 5 years including T32 slots held previously.</td></tr>
+              </tbody>
+            </table>
+            <div class="info-box">NIH updates NRSA stipend levels annually in October. Rates shown are FY2026 (effective October 1, 2025). Check <a href="https://grants.nih.gov/training/nrsa.htm" target="_blank" style="color:var(--navy);font-weight:600">grants.nih.gov/training/nrsa.htm</a> for the most current figures before budgeting.</div>
+          </div>
+        </div>
+        <div>
+          <div class="tip-card" style="margin-bottom:1.1rem">
+            <h3>Key facts</h3>
+            <ul class="tip-list">
+              <li><strong>FOA:</strong> PA-25-422 (Parent F31). Verify current active FOA at grants.nih.gov before beginning your application.</li>
+              <li><strong>Frees you from TA duties</strong> — the primary benefit beyond the stipend is protected research time. Many universities waive TA requirements for F31 awardees.</li>
+              <li><strong>Success rate:</strong> 20–30% depending on the NIH Institute or Center (IC). Varies by field and payline. Check your target IC's website for their current payline.</li>
+              <li><strong>Portability:</strong> The F31 is tied to your institution. If you transfer, you must submit a new application. (Unlike the NSF GRFP, which is fully portable.)</li>
+              <li><strong>Cannot hold concurrently</strong> with another federally sponsored fellowship that provides a stipend or duplicates provisions.</li>
+              <li><strong>Resubmission allowed:</strong> If not funded on first try, you get one resubmission (A1). Many successful awardees won on A1.</li>
+              <li><strong>Review criteria revised January 2025:</strong> New FORMS-I application format. Check current instructions if applying for the first time.</li>
+              <li><strong>Target your IC carefully:</strong> NCI for cancer, NIMHD for health disparities, NCATS for translational/data science, NIBIB for biomedical imaging/engineering, NHGRI for genomics. Each IC has its own payline and priorities.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB: ELIGIBILITY & DEADLINES -->
+    <div class="sec-pane" id="tab-elig">
+      <div class="two-col">
+        <div class="tip-card">
+          <h3>Eligibility requirements</h3>
+          <ul class="tip-list">
+            <li><strong>US citizenship or permanent residency required</strong> at time of award. Non-citizen nationals are also eligible. F-1, J-1, H-1B visa holders are not eligible. No exceptions.</li>
+            <li><strong>Enrolled full-time in a research doctoral program</strong> (PhD, MD/PhD, or equivalent) in biomedical, behavioral, or clinical sciences at a domestic institution.</li>
+            <li><strong>Best timing: years 2–4 of PhD.</strong> Most successful applicants have passed their qualifying exam and have preliminary data. Applying in year 1 is possible but harder. Applying after year 4 is risky — reviewers may question whether you need it to finish.</li>
+            <li><strong>Named faculty sponsor required</strong> — your dissertation advisor with an active research program and a track record of mentoring predoctoral students. Co-sponsors are allowed and can strengthen the application.</li>
+            <li><strong>Aggregate NRSA support limit:</strong> 5 years total predoctoral support counting T32 slots and F31 combined. Track any T32 support received.</li>
+            <li><strong>Each NIH Institute has its own participation</strong> — not all ICs fund all research areas. Verify your target IC is participating and accepting applications.</li>
+            <li><strong>One resubmission allowed (A1).</strong> After that, submit as a substantially revised new application (A0).</li>
+          </ul>
+        </div>
+        <div class="tip-card">
+          <h3>Submission deadlines — Parent F31 (PA-25-422)</h3>
+          <table class="budget-table" style="margin-bottom:1rem">
+            <thead><tr><th>Due Date</th><th>Review Period</th><th>Earliest Start</th></tr></thead>
+            <tbody>
+              <tr><td class="val">April 8</td><td>June/July</td><td>~April of following year</td></tr>
+              <tr><td class="val">August 8</td><td>October/November</td><td>~August of following year</td></tr>
+              <tr><td class="val">December 8</td><td>February/March</td><td>~December of following year</td></tr>
+            </tbody>
+          </table>
+          <ul class="tip-list">
+            <li><strong>All deadlines are 5:00 PM local time</strong> of the applicant's organization. NIH prohibits late submissions for fellowships — plan accordingly.</li>
+            <li><strong>Timeline gap:</strong> Submission to funding is 10–12 months. Submit in April 2026 → earliest funding April 2027. Plan bridge funding with your advisor.</li>
+            <li><strong>Institute-specific FOAs</strong> may have different deadlines. Always check the specific FOA you're applying to — the dates above are for the parent announcement.</li>
+            <li><strong>Institutional internal deadlines</strong> are often 1–2 weeks before the NIH deadline. Contact your grants office early to confirm.</li>
+            <li><strong>Reference letters have their own deadline</strong> in the eRA Commons portal, typically 5–7 days after the application deadline. Confirm with your grants office.</li>
+          </ul>
+          <div class="warn-box">&#9888; <strong>Critical:</strong> Confirm the application's status and your target IC's current payline before committing to a submission cycle. NIH funding landscapes can shift across fiscal years.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB: APPLICATION COMPONENTS -->
+    <div class="sec-pane" id="tab-components">
+      <div class="two-col" style="margin-bottom:1.25rem">
+        <div class="tip-card">
+          <h3>Specific Aims page <span class="pg-tag">1 page — most critical</span></h3>
+          <p style="font-size:.83rem;color:var(--text-m);margin-bottom:.75rem;line-height:1.55">The single most important page of your application. Reviewers form their first impression here and many decide on a preliminary score before finishing it. Use every sentence deliberately.</p>
+          <ol class="step-list">
+            <li><strong>Opening paragraph (3–4 sentences)</strong> — establish the problem and its significance to human health. State the gap in current knowledge. Be direct — reviewers see 15–25 applications in one sitting.</li>
+            <li><strong>Long-term goal &amp; overall objective</strong> — your career vision and what this fellowship specifically achieves. One sentence each.</li>
+            <li><strong>Central hypothesis</strong> — a clear, testable statement. Not a question — a hypothesis.</li>
+            <li><strong>2–3 specific aims</strong> — one sentence of approach for each. Avoid more than 3. Avoid interdependent aims where Aim 2 fails if Aim 1 fails.</li>
+            <li><strong>Payoff paragraph</strong> — what will the field know when this work is done? Why does this matter? Close with a compelling statement of expected impact.</li>
+          </ol>
+        </div>
+        <div class="tip-card">
+          <h3>Research Strategy <span class="pg-tag">6 pages</span></h3>
+          <ol class="step-list">
+            <li><strong>Significance (~1 page)</strong> — why does this research matter? What changes when you're done? Don't write a literature review — write a focused argument for why this specific gap needs filling. Tie to human health outcomes.</li>
+            <li><strong>Innovation (~½ page)</strong> — what is novel about your approach? This does not require a new technique: combining existing methods in a new context or studying an unexplored question counts. Be specific.</li>
+            <li><strong>Approach (~4.5 pages)</strong> — for each aim: rationale, experimental design, methods, expected outcomes, potential pitfalls, and alternative approaches. Include preliminary data — reviewers want evidence you can execute this project.</li>
+          </ol>
+          <div class="info-box" style="margin-top:.75rem">The F31 gets 6 pages for Research Strategy — not 12 like an R01. Every sentence must earn its place. Proposing too much is the #1 critique on F31 Approach sections.</div>
+        </div>
+      </div>
+      <div class="two-col">
+        <div class="tip-card">
+          <h3>Training Plan &amp; Career Goals</h3>
+          <p style="font-size:.83rem;color:var(--text-m);margin-bottom:.75rem;line-height:1.55">Where F31 differs most from an R-series grant. Reviewers score training as heavily as research. A strong Research Strategy with a vague Training Plan will still score poorly.</p>
+          <ul class="tip-list">
+            <li><strong>Specific new skills you will gain</strong> — not skills you already have. Name the techniques, courses, or methods. "I'll learn CRISPR screening from Dr. [Name]'s lab" is stronger than "I'll develop genetic tools expertise."</li>
+            <li><strong>Named mentorship plan</strong> — primary sponsor, thesis committee members, any co-mentors for specific techniques. How often will you meet? How will your committee ensure you develop independence?</li>
+            <li><strong>Career milestones with a timeline</strong> — first conference presentation, first paper submission, qualifying exam (if not yet done), thesis defense, postdoc application start date.</li>
+            <li><strong>Career goals beyond the PhD</strong> — academia, industry, government, policy. Reviewers want to fund someone with a plan for where they're going.</li>
+            <li><strong>Responsible Conduct of Research (RCR) plan</strong> — required. Describe the formal training you'll receive. This is not optional.</li>
+          </ul>
+        </div>
+        <div class="tip-card">
+          <h3>Sponsor Statement &amp; Letters of Support</h3>
+          <ul class="tip-list">
+            <li><strong>Sponsor's letter matters more than applicants realize.</strong> A generic template-sounding sponsor letter is a red flag. It should feel written for you specifically.</li>
+            <li>The sponsor statement must address: mentoring track record (where are previous trainees now?), their plan to ensure your independence, the lab's resources for this project, and how your dissertation fits within but is not simply a subsection of their R01.</li>
+            <li>Request 3–5 reference letters from committee members, rotation advisors, and collaborators who know your research work specifically. Generic letters from distinguished scientists who barely know you hurt more than help.</li>
+            <li>Reference letters go directly to NIH — you do not see them. Provide letter writers with your aims page and a brief memo on what you hope each will emphasize.</li>
+            <li><strong>Biosketch:</strong> Use NIH FORMS-I format. Personal statement should connect your background to this fellowship specifically. Include presentations, posters, and preprints even if no peer-reviewed publications yet.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB: SCORING -->
+    <div class="sec-pane" id="tab-scoring">
+      <div class="warn-box" style="margin-bottom:1.25rem">&#9888; <strong>Review criteria changed January 25, 2025.</strong> PA-25-422 (the current parent FOA, issued June 2025) uses a new 3-criterion structure. If you find older resources describing 5 criteria — Fellowship Applicant, Sponsors, Research Training Plan, Training Potential, Institutional Environment — those are outdated. The criteria below are what reviewers use for any application submitted on or after January 25, 2025.</div>
+      <p style="font-size:.88rem;color:var(--text-m);line-height:1.75;margin-bottom:1.25rem">F31 applications are reviewed by NIH fellowship-specific study sections. Three assigned reviewers score <strong>three criteria</strong> independently (1–9, where 1 is best) and give an overall impact score, then discuss as a panel. Impact scores are averaged across reviewers and converted to a percentile for ranking. Source: PA-25-422, Section V.</p>
+      <div class="criteria-grid" style="grid-template-columns:repeat(3,1fr)">
+        <div class="crit-card">
+          <div class="crit-head">Criterion 1 — Candidate's Goals, Preparedness &amp; Potential</div>
+          <div class="crit-body" style="text-align:left">
+            <p style="margin-bottom:.5rem;font-size:.77rem">Reviewers assess:</p>
+            <ul style="list-style:none;font-size:.77rem;color:rgba(255,255,255,.75);line-height:1.5">
+              <li style="padding:.2rem 0 .2rem .9rem;position:relative"><span style="position:absolute;left:0;color:rgba(255,255,255,.35)">→</span>How previous experience prepares the candidate for the proposed plan — considering their stage of training</li>
+              <li style="padding:.2rem 0 .2rem .9rem;position:relative"><span style="position:absolute;left:0;color:rgba(255,255,255,.35)">→</span>Whether candidate and sponsor statements and referee letters show scientific understanding, creativity, curiosity, resourcefulness and drive</li>
+              <li style="padding:.2rem 0 .2rem .9rem;position:relative"><span style="position:absolute;left:0;color:rgba(255,255,255,.35)">→</span>Candidate's potential to benefit from the plan and transition successfully to the next career stage in biomedical research</li>
+            </ul>
+          </div>
+        </div>
+        <div class="crit-card">
+          <div class="crit-head">Criterion 2 — Research Training Plan</div>
+          <div class="crit-body" style="text-align:left">
+            <p style="margin-bottom:.5rem;font-size:.77rem">Reviewers assess:</p>
+            <ul style="list-style:none;font-size:.77rem;color:rgba(255,255,255,.75);line-height:1.5">
+              <li style="padding:.2rem 0 .2rem .9rem;position:relative"><span style="position:absolute;left:0;color:rgba(255,255,255,.35)">→</span>Rigor and feasibility of the research project and how it will develop the candidate as a research scientist</li>
+              <li style="padding:.2rem 0 .2rem .9rem;position:relative"><span style="position:absolute;left:0;color:rgba(255,255,255,.35)">→</span>Goals of the overall training plan and whether they will facilitate the attainment of those goals</li>
+              <li style="padding:.2rem 0 .2rem .9rem;position:relative"><span style="position:absolute;left:0;color:rgba(255,255,255,.35)">→</span>Whether the plan identifies areas of needed development and contains appropriate, realistic activities and milestones</li>
+              <li style="padding:.2rem 0 .2rem .9rem;position:relative"><span style="position:absolute;left:0;color:rgba(255,255,255,.35)">→</span>Whether sponsor(s), scientific environment, facilities and resources are adequate for the plan</li>
+            </ul>
+          </div>
+        </div>
+        <div class="crit-card">
+          <div class="crit-head">Criterion 3 — Commitment to Candidate, Mentoring &amp; Training Environment</div>
+          <div class="crit-body" style="text-align:left">
+            <p style="margin-bottom:.5rem;font-size:.77rem">Reviewers assess:</p>
+            <ul style="list-style:none;font-size:.77rem;color:rgba(255,255,255,.75);line-height:1.5">
+              <li style="padding:.2rem 0 .2rem .9rem;position:relative"><span style="position:absolute;left:0;color:rgba(255,255,255,.35)">→</span>Whether the sponsor presents a strong mentoring plan appropriate to the candidate's needs and goals</li>
+              <li style="padding:.2rem 0 .2rem .9rem;position:relative"><span style="position:absolute;left:0;color:rgba(255,255,255,.35)">→</span>Whether the sponsor's and organization's commitment is appropriate, sufficient, and aligned with the research training plan</li>
+              <li style="padding:.2rem 0 .2rem .9rem;position:relative"><span style="position:absolute;left:0;color:rgba(255,255,255,.35)">→</span>Whether the level of commitment will contribute to successful completion and allow the candidate to advance to a productive career</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="crit-note" style="margin-top:1.1rem"><strong>Overall Impact score:</strong> Reviewers provide an impact score reflecting "the likelihood that the fellowship will enhance the candidate's potential for, and commitment to, a productive independent scientific research career in a health-related field." Scores run 1–9 (1 = best); the three reviewers' overall impact scores are averaged and multiplied by 10 (range: 10–90). This converts to a percentile against all applications in that round. Whether you're funded depends on your IC's payline — typically the 10th–25th percentile depending on the institute. Check your target IC's website before submitting. <strong>Additional (unscored) considerations include:</strong> Human subjects protections, vertebrate animals, biohazards, Responsible Conduct of Research plan, and budget justification.</div>
+    </div>
+
+    <!-- TAB: WRITING STRATEGIES -->
+    <div class="sec-pane" id="tab-writing">
+      <div class="two-col" style="margin-bottom:1.1rem">
+        <div class="tip-card">
+          <h3>Specific Aims — 10 commandments</h3>
+          <ul class="tip-list">
+            <li><strong>Get to the research by sentence 4.</strong> The first paragraph is not a history lesson — it's an argument. Gap → problem → your answer.</li>
+            <li><strong>State a testable hypothesis</strong> — not a question, not a goal. "We hypothesize that [X] regulates [Y] through [Z]."</li>
+            <li>Limit yourself to <strong>2–3 aims maximum</strong>. Three tightly scoped aims is stronger than four sprawling ones.</li>
+            <li>Make aims <strong>independent where possible</strong> — if Aim 2 requires Aim 1 to succeed perfectly, reviewers will penalize the fragility.</li>
+            <li>End with a compelling <strong>"payoff" paragraph</strong> — what will the field know? What will change? Why does NIH benefit from funding this now?</li>
+            <li>Write for a <strong>general biomedical audience</strong> — your reviewer holds a PhD in your field, not your subfield. Define key terms.</li>
+            <li>Every aim should connect back to your <strong>central hypothesis</strong> — they should feel like a coherent plan, not a wishlist of experiments.</li>
+            <li>Show <strong>pilot data or feasibility</strong> in the aims page wherever possible — even one sentence referencing a figure in the approach counts.</li>
+            <li>Use your advisor's <strong>feedback aggressively</strong> on the aims page. It's the one page that determines whether reviewers read everything else carefully.</li>
+            <li><strong>Read it aloud</strong> to someone outside your lab. If they can't follow the logic, rewrite.</li>
+          </ul>
+        </div>
+        <div class="tip-card">
+          <h3>Research Strategy — section by section</h3>
+          <ul class="tip-list">
+            <li><strong>Significance:</strong> Don't write a literature review. Write a focused argument for why this specific gap must be filled — and tie it to human health outcomes. End with a clear statement of what changes when your work is done.</li>
+            <li><strong>Innovation:</strong> Not required to invent a new technique. Using a tool in a new context, combining approaches, or asking a genuinely unexplored question all qualify. Be specific — "this is innovative because [specific reason]," not just "this is the first study of X."</li>
+            <li><strong>Approach:</strong> Include preliminary data. A figure showing pilot results can be worth half a page of text. Even a power calculation showing feasibility makes a difference to reviewers skeptical about a trainee's execution ability.</li>
+            <li>For every high-risk step in the Approach, include <strong>at least one alternative approach</strong>. This is not a sign of weakness — it's a sign of scientific maturity.</li>
+            <li>Include explicit <strong>success metrics</strong> for each aim. What does "it worked" look like? This is a scored criterion — do not leave reviewers guessing.</li>
+            <li><strong>Don't propose more than you can finish.</strong> The F31 is for 2–3 years of work. Overpromising is the #1 Approach critique. Depth over breadth.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="two-col">
+        <div class="tip-card">
+          <h3>Training Plan — don't treat as an afterthought</h3>
+          <ul class="tip-list">
+            <li>List <strong>specific, named skills</strong> you will learn — not general competencies you already have. "I will gain expertise in single-cell RNA sequencing through Dr. [Name]'s weekly training" is stronger than "I will develop bioinformatics skills."</li>
+            <li>Include a <strong>timeline</strong> with concrete milestones: first paper draft, conference presentation, qualifying exam, postdoc search, thesis defense. Reviewers want a scientist with a plan.</li>
+            <li>Describe your <strong>mentorship team by name</strong>. Primary sponsor, committee members, any co-mentors or external collaborators. How often do you meet? How do they ensure you develop independence from your PI?</li>
+            <li>State your <strong>career goal clearly</strong> — faculty, industry, government, policy. Reviewers want to fund someone who has thought about where they're going beyond the PhD.</li>
+            <li><strong>RCR plan is required</strong> and scored. Name the actual RCR courses, seminars, or workshops at Meharry or your training program. Don't let this be a blank check item.</li>
+          </ul>
+        </div>
+        <div class="tip-card">
+          <h3>Resubmission (A1) — don't treat rejection as a dead end</h3>
+          <ul class="tip-list">
+            <li>Many successful F31 awardees were funded on their <strong>A1 (first resubmission)</strong>. A rejection is the beginning of a revision process, not an end.</li>
+            <li>The A1 includes a <strong>1-page Introduction</strong> explaining how you addressed reviewer concerns. This is the first thing reviewers read — it sets the tone. Be direct and specific: "Reviewer 2 noted that Aim 1 lacked power analysis. We have added a power analysis (p. 4) with an increased sample size."</li>
+            <li><strong>Address every concern</strong> — even minor ones. Acknowledge the point, explain what changed, point to the page. Skipping minor concerns signals you didn't take review seriously.</li>
+            <li><strong>Add new preliminary data</strong> if you have it. Nothing silences feasibility concerns like results.</li>
+            <li>If multiple reviewers misunderstood the same section, <strong>the writing was the problem</strong>, not the reviewers. Restructure, don't rephrase.</li>
+            <li><strong>Do not argue with reviewers</strong> unless they are factually wrong. Even then, be diplomatic: "We appreciate this concern and respectfully clarify that [X]."</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB: COMMON MISTAKES -->
+    <div class="sec-pane" id="tab-mistakes">
+      <div class="pf-grid">
+        <div class="pf-card"><div class="pf-num">Mistake 1</div><h3>Treating the F31 like a research grant, not a training grant</h3><p>The F31 funds YOU, not a project. If reviewers can't see how this fellowship advances your career as a scientist — specific skills gained, career trajectory, mentorship quality — the score suffers regardless of how strong the science is.</p></div>
+        <div class="pf-card"><div class="pf-num">Mistake 2</div><h3>Proposing too many experiments</h3><p>Three years of work crammed into a 6-page Research Strategy signals infeasibility. Reviewers know you're a trainee — they want a realistic plan with depth, not a 5-aim proposal that no one can finish. Scale back and show mastery of your scope.</p></div>
+        <div class="pf-card"><div class="pf-num">Mistake 3</div><h3>No preliminary data</h3><p>You don't need a published paper, but showing pilot experiments that support your hypothesis and feasibility makes a massive difference. A single figure of pilot data can often address the most common feasibility concern.</p></div>
+        <div class="pf-card"><div class="pf-num">Mistake 4</div><h3>Interdependent aims</h3><p>If Aim 2 requires Aim 1 to succeed perfectly and Aim 1 is high-risk, your whole proposal looks fragile. Design aims to be as independent as possible. If they must be sequential, include alternatives if the first aim doesn't fully succeed.</p></div>
+        <div class="pf-card"><div class="pf-num">Mistake 5</div><h3>A generic or template sponsor letter</h3><p>Reviewers read hundreds of sponsor letters. A one-page letter that could have been written for any student tells them your PI isn't invested. The sponsor letter should describe your specific project, your track record in that lab, and your individual development plan.</p></div>
+        <div class="pf-card"><div class="pf-num">Mistake 6</div><h3>Not tailoring the application to your target IC</h3><p>NIH has 27 Institutes and Centers. A proposal about health disparities in AI diagnostics sent to the wrong IC will confuse reviewers. Know your IC's mission, check their payline, and read their recently funded F31s through NIH Reporter.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GPP SECTION -->
+<section id="gpp">
+  <div class="wrap">
+    <div class="lbl">NIH Intramural Research</div>
+    <h2 class="sh" style="color:var(--gpp)">GPP — Graduate Partnerships Program</h2>
+    <p class="sub">The GPP lets you conduct your dissertation research in an NIH Intramural Research Program (IRP) laboratory while remaining enrolled at your home university. The stipend is substantially higher than the F31, health insurance is covered, and the research environment is unmatched. Critically, international students are eligible.</p>
+    <div class="gpp-grid">
+      <div class="gpp-card">
+        <div class="gpp-head"><h3>Individual Partnership</h3><p>You're already enrolled in a PhD program and want to create an agreement between your university and an NIH lab.</p></div>
+        <div class="gpp-body">
+          <ul class="gpp-rows">
+            <li><span class="r-lbl">How it works</span><span class="r-val">You find an NIH PI whose research aligns with your interests, get permission from your graduate program, and register as a GPP student. Your dissertation research is conducted in the NIH lab.</span></li>
+            <li><span class="r-lbl">Deadline</span><span class="r-val"><strong>Open year-round</strong> — no central deadline for individual partnerships. Apply when you've identified a mentor and obtained departmental approval.</span></li>
+            <li><span class="r-lbl">Citizenship</span><span class="r-val">US citizens, permanent residents, AND international students on J-1 visas. F-1 visa holders can participate but are limited to 20 hours/week during coursework.</span></li>
+            <li><span class="r-lbl">Find a mentor</span><span class="r-val">Browse NIH labs at intramural.nih.gov. Contact PIs directly to discuss your interests. No central application before finding a mentor who agrees to host you.</span></li>
+            <li><span class="r-lbl">Background check</span><span class="r-val">Federal background check (SF-85) required for all GPP participants. Must be approved before accessing NIH facilities.</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="gpp-card">
+        <div class="gpp-head"><h3>Institutional Partnership</h3><p>Your university has a formal partnership with NIH — you enroll in the PhD program specifically designed around NIH research.</p></div>
+        <div class="gpp-body">
+          <ul class="gpp-rows">
+            <li><span class="r-lbl">How it works</span><span class="r-val">Universities with formal NIH partnerships offer PhD programs where students spend part or all of their doctoral training at NIH. Meharry students should contact SACS about any active institutional partnerships.</span></li>
+            <li><span class="r-lbl">Deadline</span><span class="r-val"><strong>August 19 – December 2</strong> annually for institutional partnerships. Check specific partnership for exact dates — varies by institution and IC.</span></li>
+            <li><span class="r-lbl">Citizenship</span><span class="r-val">Most institutional partnerships require US citizenship or permanent residency. International eligibility varies by specific partnership — confirm with the relevant IC.</span></li>
+            <li><span class="r-lbl">Apply</span><span class="r-val">Apply both to the university's PhD program AND to the NIH GPP Application Center. Some partnerships require both applications simultaneously.</span></li>
+            <li><span class="r-lbl">Partner schools</span><span class="r-val">Georgetown, UMD, Virginia Tech, and 30+ others have formal partnerships. See training.nih.gov/gpp for the current list.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="tip-card" style="margin-top:1.25rem">
+      <h3>GPP benefits and stipend</h3>
+      <div class="gpp-benefit">
+        <div class="gpp-b"><strong>Stipend: $51,000/yr (Year 1) — rising annually</strong>Per the official NIH IRP Predoctoral stipend table (training.nih.gov/stipends, last reviewed July 2026): Yr 1: $51,000 · Yr 2: $55,954 · Yr 3: $57,873 · Yr 4–5: $59,893. Far higher than the F31 ($29,364). All GPP students must be paid at or above the NIH stipend table.</div>
+        <div class="gpp-b"><strong>Full health insurance covered</strong>NIH provides a stipend supplement covering the full cost of FAES (Foundation for Advanced Education in the Sciences) health insurance — medical, dental, and vision for individuals AND families.</div>
+        <div class="gpp-b"><strong>$1,500 relocation allowance</strong>One-time benefit for students moving to the vicinity of an NIH campus (Bethesda MD, Research Triangle NC, Cincinnati OH, and others).</div>
+        <div class="gpp-b"><strong>Free parking + Transhare</strong>Free parking on NIH campuses. Eligible students on some campuses may participate in the federal Transhare program (commuter benefit).</div>
+        <div class="gpp-b"><strong>World-class research infrastructure</strong>Access to NIH core facilities, technologies, and collaborators unavailable at most universities. The IRP is one of the largest biomedical research organizations in the world.</div>
+        <div class="gpp-b"><strong>Professional development</strong>NIH IRP offers extensive career development programming, networking with investigators across all biomedical fields, and exposure to the full research pipeline from basic to clinical.</div>
+      </div>
+    </div>
+    <div class="info-box" style="margin-top:1.1rem">&#128204; <strong>For Meharry students:</strong> The GPP is an exceptional opportunity for students in SACS whose research in federated learning, AI for healthcare, or data science aligns with NIH IRP labs at NCATS, NIBIB, NCI, or NIMHD. Contacting NIH PIs directly and early is the key first step — there is no centralized application before that conversation.</div>
+  </div>
+</section>
+
+<!-- OTHER NIH PROGRAMS -->
+<section class="bg-fog" id="other">
+  <div class="wrap">
+    <div class="lbl">Other Mechanisms</div>
+    <h2 class="sh">F30, F99/K00, and Diversity Supplements</h2>
+    <p class="sub">Additional NIH pathways depending on your degree type, stage of training, and background. Read these carefully — they are often underutilized by eligible students.</p>
+
+    <div class="oth-grid" style="margin-bottom:1.25rem">
+      <div class="oth-card">
+        <div class="oth-head f30"><h3>F30 — MD/PhD and Dual-Doctoral Degree Fellowship</h3><p>For students pursuing combined MD/PhD, DO/PhD, DDS/PhD, DVM/PhD, or similar dual-degree programs. Both the clinical and research training are supported.</p></div>
+        <div class="oth-body">
+          <div class="detail-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.55rem;margin-bottom:.75rem">
+            <div class="oth-detail"><strong>Stipend (FY2026)</strong><span>$29,364/year (NRSA predoctoral level)</span></div>
+            <div class="oth-detail"><strong>Tuition cap (FY2026)</strong><span><strong>Up to $21,000/year</strong> (60% of actual tuition) — higher than the standard F31 cap of $16K, because F30 covers dual-degree training. Per NOT-OD-26-044.</span></div>
+            <div class="oth-detail"><strong>Duration</strong><span>Up to 6 years total NRSA support</span></div>
+            <div class="oth-detail"><strong>Application timing</strong><span>Within 48 months of matriculation; no later than 24 months into dissertation research</span></div>
+            <div class="oth-detail"><strong>Research requirement</strong><span>At least 50% of the award period must be full-time graduate research training</span></div>
+          </div>
+          <ul>
+            <li>NIH will not provide funding beyond your 8th year in the dual-degree program</li>
+            <li>You must have advanced to PhD candidacy by the time of award</li>
+            <li>FOA differs depending on whether your institution has an NIH-funded MSTP (Medical Scientist Training Program) — check which parent FOA applies to your institution</li>
+            <li>If your dual-degree program has no gap between PhD completion and postdoc (no clinical training period between), you may be eligible for the F99/K00 instead — contact the IC program officer to confirm</li>
+            <li>Same citizenship requirements as the F31: US citizens and permanent residents only</li>
+          </ul>
+        </div>
+      </div>
+      <div class="oth-card">
+        <div class="oth-head f99"><h3>F99/K00 — Predoctoral to Postdoctoral Transition Award</h3><p>Two-phase award bridging your final dissertation years into a fully-funded postdoctoral position. One of the most underutilized awards — many mentors don't know it exists.</p></div>
+        <div class="oth-body">
+          <div class="detail-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.55rem;margin-bottom:.75rem">
+            <div class="oth-detail"><strong>F99 phase (predoc)</strong><span>$29,364/yr stipend + tuition + $4,550 institutional allowance; 1–2 years</span></div>
+            <div class="oth-detail"><strong>K00 phase (postdoc)</strong><span>$75,000/yr salary + $25,000 career development support; 3–4 years</span></div>
+            <div class="oth-detail"><strong>Apply when</strong><span>Years 3–5 of PhD; must need 1–2 more years to finish dissertation at time of award</span></div>
+            <div class="oth-detail"><strong>Next standard deadline</strong><span>August 8, 2026 (see active FOA PA-27-037)</span></div>
+          </div>
+          <ul>
+            <li>You do NOT need to know where you will do your postdoc when you apply — you identify a postdoc mentor during the F99 phase</li>
+            <li>NCI requires the K00 postdoc to be cancer-focused; the F99 dissertation can be in any biomedical area. Other ICs have their own requirements — check each IC</li>
+            <li>NCI applicants are expected to pursue postdoc positions at a different institution from their PhD institution</li>
+            <li>Transition from F99 to K00 is <strong>not automatic</strong> — you must complete your PhD and activate the K00 phase separately</li>
+            <li><strong>Cannot hold simultaneously with F31 or F30</strong> — you would need to relinquish the earlier award. Plan your application timing accordingly</li>
+            <li>Not all ICs participate — check the current FOA participant list before beginning your application</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- DIVERSITY SUPPLEMENT -->
+    <div class="tip-card" style="margin-bottom:1.1rem;border-left:4px solid var(--warn);border-radius:0 var(--rm) var(--rm) 0">
+      <h3 style="color:var(--warn)">&#127775; Diversity Supplement (PA-23-189) — Often the Fastest Path to Funding</h3>
+      <div class="two-col" style="margin-top:.75rem">
+        <ul class="tip-list">
+          <li><strong>Your PI applies, not you.</strong> The diversity supplement is an administrative supplement added to an existing, active NIH research award (R01, R21, R03, etc.).</li>
+          <li><strong>No fixed deadline</strong> — applications are accepted on a rolling basis, though many ICs have informal windows. Faster to fund than an individual fellowship.</li>
+          <li><strong>Eligibility:</strong> Students from underrepresented racial/ethnic groups, individuals with disabilities, individuals from disadvantaged socioeconomic backgrounds, or individuals from rural areas. Check the FOA for current NIH definitions.</li>
+          <li><strong>Stipend:</strong> Covers your stipend at NRSA levels plus training-related costs. In many cases pays more than an F31 because it does not have the same tuition cap structure.</li>
+        </ul>
+        <ul class="tip-list">
+          <li><strong>The student must not already be listed as personnel</strong> in the budget section of the parent grant. Ideally you are a new addition to the lab.</li>
+          <li><strong>Research must be within the scope of the parent grant</strong> — you cannot propose an entirely different project. Work with your PI to frame your project as a component of their funded research.</li>
+          <li><strong>For Meharry students:</strong> If your PI has an active NIH award and you are from an underrepresented group, this may be the fastest route to funded training. Ask your potential advisor whether they have an active award that could support a supplement.</li>
+          <li><strong>Not mutually exclusive</strong> with an individual fellowship — you can hold a diversity supplement and later apply for an F31 once eligible (though not simultaneously with another NRSA award).</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- F31-DIVERSITY WARNING -->
+    <div class="warn-box">
+      <strong>&#9888; F31-Diversity — Current Status Notice (Updated September 2026)</strong><br>
+      The NIH Ruth L. Kirschstein NRSA Individual Predoctoral Fellowship to Promote Diversity in Health-Related Research (F31-Diversity) was a parallel track to the standard F31, designed specifically for predoctoral students from groups underrepresented in biomedical research. In 2025, NIH terminated a significant number of F31-Diversity awards along with other grants, citing policy changes under new agency leadership. Some of these awards were subsequently reinstated after appeals; others were not. The funding opportunity landscape for diversity-specific mechanisms has been evolving throughout 2025–2026.<br><br>
+      <strong>Action required:</strong> Before beginning a diversity-specific F31 application, verify that (1) the F31-Diversity FOA is currently active at grants.nih.gov, (2) your target IC is participating, and (3) awards in this mechanism are currently being funded. Contact the relevant IC program officer directly for current program status. The standard F31 (PA-25-422) may be the safer path while the landscape stabilizes.
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON TABLE -->
+<section id="comparison">
+  <div class="wrap">
+    <div class="lbl">Side-by-Side</div>
+    <h2 class="sh">Program Comparison Table</h2>
+    <p class="sub">How the major NIH PhD fellowships compare to each other — and to the NSF GRFP. You can hold them sequentially; never simultaneously.</p>
+    <div style="overflow-x:auto">
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th class="row-lbl">Feature</th>
+          <th class="th-f31" style="color:var(--f31)">NIH F31</th>
+          <th class="th-gpp" style="color:var(--gpp)">NIH GPP</th>
+          <th class="th-f99" style="color:var(--f99)">NIH F99/K00</th>
+          <th class="th-grfp" style="color:var(--navy)">NSF GRFP</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="row-lbl">FY2026 Stipend</td><td class="col-f31">$29,364/yr</td><td class="col-gpp">$51,000/yr (Yr 1); rises to $59,893 by Yr 4–5</td><td class="col-f99">$29,364 (F99) / IC-specific salary (K00; ~$75K at NIA)</td><td class="col-grfp">$37,000/yr</td></tr>
+        <tr><td class="row-lbl">Tuition/Education</td><td>60% up to $16K/yr</td><td>Full coverage by NIH &amp; university partnership</td><td>60% up to $16K (F99); $25K career dev (K00)</td><td>$16K cost-of-education allowance</td></tr>
+        <tr><td class="row-lbl">Duration</td><td>Up to 5 years</td><td>Varies; dissertation duration</td><td>1–2 yrs (F99) + 3–4 yrs (K00) = 5 yrs total</td><td>3 years over 5-year window</td></tr>
+        <tr><td class="row-lbl">Best timing</td><td>PhD years 2–4</td><td>Any PhD stage; institutional: before matriculation</td><td>PhD years 3–5</td><td>Senior undergrad or PhD year 1</td></tr>
+        <tr><td class="row-lbl">Citizenship</td><td>US citizen / permanent resident</td><td>US + international (J-1 eligible)</td><td>US citizen / permanent resident</td><td>US citizen, national, or permanent resident</td></tr>
+        <tr><td class="row-lbl">Where you work</td><td>Your home institution</td><td>NIH Intramural (Bethesda &amp; other campuses)</td><td>Home institution (F99); any postdoc institution (K00)</td><td>Your institution (fully portable)</td></tr>
+        <tr><td class="row-lbl">Portability</td><td>Tied to institution</td><td>Tied to NIH lab / partnership</td><td>Tied to institution (F99); portable with K00</td><td>Fully portable across institutions</td></tr>
+        <tr><td class="row-lbl">Research scope</td><td>Biomedical, behavioral, clinical</td><td>All NIH IRP research areas (basic to clinical)</td><td>Biomedical; K00 must align with IC mission</td><td>All STEM + social sciences</td></tr>
+        <tr><td class="row-lbl">Review focus</td><td>3 scored criteria: Goals &amp; Potential · Research Training Plan · Commitment &amp; Mentoring (per PA-25-422)</td><td>Research fit + mentor match + institutional review</td><td>Applicant + research plan + transition readiness</td><td>Intellectual Merit + Broader Impacts (2 criteria)</td></tr>
+        <tr><td class="row-lbl">Application length</td><td>~25–30 pages total</td><td>Varies by pathway and IC</td><td>~20–25 pages total</td><td>~8 pages total (shorter)</td></tr>
+        <tr><td class="row-lbl">Success rate</td><td>20–30% (IC-dependent)</td><td>Competitive; varies by IC</td><td>Select ICs; competitive</td><td>~15–20%</td></tr>
+        <tr><td class="row-lbl">Post-PhD bridge</td><td>No postdoc support</td><td>No postdoc support</td><td>Yes — K00 funds your postdoc directly</td><td>No postdoc support</td></tr>
+        <tr><td class="row-lbl">Can hold both?</td><td colspan="4" style="text-align:center;color:var(--text-s);font-style:italic">NSF GRFP early (yr 0–1) → then F31 (yr 2–4) → then F99/K00 (yr 3–5 into postdoc). Cannot hold any NRSA simultaneously with another NRSA or NSF GRFP. Sequencing is the strategy.</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</section>
+
+<!-- WRITING GUIDE -->
+<section class="bg-fog" id="writing">
+  <div class="wrap">
+    <div class="lbl">Application Strategy</div>
+    <h2 class="sh">Writing Guide — Across NIH Fellowships</h2>
+    <p class="sub">The principles below apply to F31, F30, and F99/K00 applications. The format and page limits differ by mechanism — the strategic thinking is the same.</p>
+    <div class="two-col" style="margin-bottom:1.25rem">
+      <div class="tip-card">
+        <h3>The Specific Aims page — universal framework</h3>
+        <p style="font-size:.83rem;color:var(--text-m);margin-bottom:.75rem;line-height:1.55">Shared across F31, F30, F99/K00, and most NIH mechanisms. One page. Gets read first. Often determines the score before anything else is read.</p>
+        <ul class="tip-list">
+          <li><strong>Open with the problem, not the history.</strong> Sentence 1 should explain the health relevance. Sentence 3 should identify the specific gap. By sentence 5, reviewers should understand exactly why this project is necessary.</li>
+          <li>The <strong>central hypothesis must be testable and falsifiable.</strong> "We will show that X" is not a hypothesis. "We hypothesize that X regulates Y through Z, because [evidence A and B]" is a hypothesis.</li>
+          <li><strong>Name 2–3 specific aims</strong> — numbered, each with one sentence of scientific approach. Don't describe the methods here — describe the scientific logic.</li>
+          <li>The <strong>payoff paragraph</strong> tells reviewers what the field gains. What will scientists, clinicians, and patients know or be able to do when your work is complete?</li>
+          <li>At Meharry, connect your Specific Aims to <strong>health outcomes for underrepresented or underserved populations</strong> wherever scientifically appropriate — this directly maps to multiple NIH ICs' missions.</li>
+        </ul>
+      </div>
+      <div class="tip-card">
+        <h3>Framing NIH fellowships vs. NSF GRFP</h3>
+        <ul class="tip-list">
+          <li><strong>NIH fellowships are training grants, not research grants.</strong> The most common F31 mistake is writing it like an R01. Reviewers expect you to describe what you will learn and how you will become a productive scientist — not just what you will discover.</li>
+          <li><strong>NIH ties directly to human health impact.</strong> Every NSF application emphasizes Broader Impacts broadly (society, STEM diversity). NIH reviewers want to see the pathway from your work to improved health outcomes — even in basic science applications.</li>
+          <li><strong>Preliminary data matters more for NIH than NSF.</strong> For the NSF GRFP, a strong conceptual proposal without pilot data can still score well. For the F31, reviewers actively look for evidence you can execute — pilot data, power calculations, and feasibility are weighted heavily.</li>
+          <li><strong>Your mentor is a scored criterion in NIH fellowships</strong> but not in the NSF GRFP. Choose your sponsor carefully and invest time in getting them to write a specific, enthusiastic sponsor letter.</li>
+          <li><strong>Apply for both.</strong> Many students apply for NSF GRFP before or during year 1, then the F31 in years 2–3. NSF GRFP provides 3 years of support — you can apply for an F31 to use after GRFP ends. Holding both sequentially is a strong CV signal.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="three-col">
+      <div class="tip-card">
+        <h3>Choosing your NIH Institute</h3>
+        <ul class="tip-list">
+          <li>Your application goes to the IC whose mission best matches your research. For Meharry SACS students: <strong>NCATS</strong> (translational science, data science), <strong>NIMHD</strong> (health disparities), <strong>NIBIB</strong> (biomedical imaging/engineering, AI), <strong>NCI</strong> (cancer data science), <strong>NHLBI</strong> (cardiometabolic).</li>
+          <li>Contact the IC's program officer before submitting. They can confirm your application is appropriate and advise on tailoring. This call is often the most valuable 30 minutes you invest.</li>
+          <li>Browse <strong>NIH Reporter (reporter.nih.gov)</strong> to find recently funded F31s in your area at your target IC — read their abstracts to understand the IC's priorities and what "successfully funded" looks like.</li>
+        </ul>
+      </div>
+      <div class="tip-card">
+        <h3>Health equity framing for NIH</h3>
+        <ul class="tip-list">
+          <li>NIH has a statutory mandate to address health disparities. Research that advances understanding of or interventions for health disparities gets strong reception at NIMHD, NCI, NHLBI, and other ICs.</li>
+          <li>If your dissertation research touches AI in healthcare, federated learning, or privacy-preserving methods for clinical data, explicitly frame how your work supports equitable access, underserved population benefit, or reduction of algorithmic bias.</li>
+          <li>The NIH Minority Health and Health Disparities Strategic Plan (2021–2025) identified five thematic areas — research you can align with these themes strengthens both IM and BI sections across all mechanisms.</li>
+        </ul>
+      </div>
+      <div class="tip-card">
+        <h3>The NIH application process — practical steps</h3>
+        <ul class="tip-list">
+          <li><strong>Register in eRA Commons</strong> — you, your PI, and your grants office all need accounts. Set this up months early, not days.</li>
+          <li><strong>Internal deadline:</strong> Your grants office (Sponsored Research Office at Meharry) typically requires your completed application 1–2 weeks before the NIH deadline. Ask for their internal deadline at the start of the process.</li>
+          <li><strong>Reference letters</strong> are uploaded by letter writers directly in eRA Commons. They receive an automated system notification — verify they have received and responded to it well before the deadline.</li>
+          <li><strong>Application guide:</strong> Use the FORMS-I (post-January 2025) SF424 application guide from grants.nih.gov. Instructions differ from FORMS-H — don't use an outdated template.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MEHARRY ADVANTAGE -->
+<section class="adv" id="advantage">
+  <div class="wrap">
+    <div class="lbl">Why Meharry</div>
+    <h2 class="sh">The Meharry Advantage for NIH Fellowships</h2>
+    <p class="sub">NIH's statutory mission includes reducing health disparities and building a diverse biomedical research workforce. Meharry students bring a research context and personal narrative that directly advances that mission.</p>
+    <div class="pil-grid">
+      <div class="pil">
+        <div class="pil-ico">&#127973;</div>
+        <h3>Health Disparities Research → NIH Mission Alignment</h3>
+        <p>Multiple NIH ICs — NIMHD, NHLBI, NCI, NCATS — have explicit health disparities mandates. Research in federated learning for equitable AI, cardiometabolic health, or privacy-preserving clinical data analysis directly advances these mandates. Your dissertation is not tangentially relevant — it is central to NIH priorities.</p>
+      </div>
+      <div class="pil">
+        <div class="pil-ico">&#127891;</div>
+        <h3>HBCU Legacy → Diversity in the Biomedical Workforce</h3>
+        <p>NIH's mandate to build a diverse, globally competitive research workforce is not a footnote — it is scored across all fellowship mechanisms. As a student at one of the nation's foremost HBCUs, your academic environment, your community, and your plan to mentor future scientists of color speak directly to this mandate. Name it explicitly in your Training Plan and Research Strategy.</p>
+      </div>
+      <div class="pil">
+        <div class="pil-ico">&#129694;</div>
+        <h3>SACS Computational Strengths → NCATS, NIBIB, NIMHD</h3>
+        <p>The School of Applied Computational Sciences' focus on data science, machine learning, and AI for healthcare positions Meharry students strongly at translational institutes. NCATS (National Center for Advancing Translational Sciences), NIBIB (National Institute of Biomedical Imaging and Bioengineering), and NCI's Center for Biomedical Informatics and Information Technology are natural homes for SACS dissertation work.</p>
+      </div>
+    </div>
+    <div class="adv-q">
+      NIH's research training programs explicitly value "research to reduce the health burden of diseases and disorders that disproportionately affect minority populations" and "training of individuals from diverse backgrounds, including underrepresented minorities." <strong>Your presence at Meharry, your research context, and your community connections are not incidental to your F31 or GPP application — they are a strategic advantage. Build them into your narrative deliberately.</strong>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="bg-fog" id="timeline">
+  <div class="wrap">
+    <div class="lbl">Month-by-Month Planning</div>
+    <h2 class="sh">F31 Application Timeline</h2>
+    <p class="sub">For an August 8 submission — the most common target for SACS students. For April or December submissions, shift all dates accordingly by ±4 months.</p>
+    <div class="tl">
+      <div class="tl-row">
+        <div class="tl-dt">8–12 months before</div>
+        <div class="tl-dot"></div>
+        <div class="tl-box">
+          <div class="tl-tag act">Strategy</div>
+          <h3>Identify your IC and contact the program officer</h3>
+          <p>Search NIH Reporter for funded F31s in your area. Identify which IC best matches your research. Call or email the IC program officer to confirm your application is appropriate — this 30-minute conversation prevents months of misdirected work.</p>
+        </div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-dt">6 months before</div>
+        <div class="tl-dot gld"></div>
+        <div class="tl-box hi">
+          <div class="tl-tag f31c">F31 Start</div>
+          <h3>Write your Specific Aims — start here, always</h3>
+          <p>Your Specific Aims page is the foundation. Write it first, share it with your advisor, revise, and share it with your committee. Everything else in the application must align with the aims page.</p>
+        </div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-dt">5 months before</div>
+        <div class="tl-dot gld"></div>
+        <div class="tl-box hi">
+          <div class="tl-tag act">Request Letters</div>
+          <h3>Request reference letters and sponsor statement now</h3>
+          <p>Give your advisor your aims page and ask for the sponsor statement. Request 3–5 reference letters with your aims page and a memo describing what you hope each will address. Give writers 3–4 months — they are writing multiple letters simultaneously.</p>
+        </div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-dt">4 months before</div>
+        <div class="tl-dot"></div>
+        <div class="tl-box">
+          <div class="tl-tag act">Draft</div>
+          <h3>First drafts of Research Strategy and Training Plan</h3>
+          <p>Write both components in parallel — they must tell a coherent story. Research Strategy alone without a strong Training Plan will score poorly. Your career milestones, skill development plan, and RCR training should be drafted alongside the Significance/Innovation/Approach sections.</p>
+        </div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-dt">2–3 months before</div>
+        <div class="tl-dt"></div>
+        <div class="tl-dot gld"></div>
+        <div class="tl-box hi">
+          <div class="tl-tag act">Revise</div>
+          <h3>Intensive revision — 3 to 4 cycles with feedback</h3>
+          <p>Share with your PI, committee members, a recent F31 awardee in your field, and the Meharry writing center. Check: Does every aim connect to the central hypothesis? Are there preliminary data for each aim? Is the Training Plan specific, named, and timed? Run the 3-criteria scorecard against your application: (1) Does your application showcase your Goals, Preparedness &amp; Potential? (2) Is the Research Training Plan rigorous and feasible? (3) Does the mentor/environment section show genuine, specific commitment?</p>
+        </div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-dt">3–4 weeks before</div>
+        <div class="tl-dot"></div>
+        <div class="tl-box">
+          <div class="tl-tag dl">Heads-up</div>
+          <h3>Submit to Meharry's Sponsored Research Office</h3>
+          <p>Your internal grants office deadline is typically 1–2 weeks before the NIH deadline. Confirm their exact date. All components — including biosketch, RCR plan, and institutional certifications — must be complete at submission to SRO, not just at NIH submission.</p>
+        </div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-dt">August 8</div>
+        <div class="tl-dot red"></div>
+        <div class="tl-box">
+          <div class="tl-tag sub">NIH Deadline</div>
+          <h3>Submit via Grants.gov by 5:00 PM local time</h3>
+          <p>Applications due by 5 PM local (Eastern for Meharry). Submit at least 24–48 hours early — system delays happen. Confirm your grants office has submitted and you receive an eRA Commons confirmation email. Verify your letter writers have uploaded their letters.</p>
+        </div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-dt">Oct/Nov review</div>
+        <div class="tl-dot"></div>
+        <div class="tl-box">
+          <div class="tl-tag act">Review</div>
+          <h3>Study section review — scores posted in eRA Commons</h3>
+          <p>You will receive your summary statement with reviewer comments through eRA Commons approximately 2–3 weeks after the study section meeting. Read all reviewer comments carefully, even if your score was excellent — they are invaluable for resubmission preparation or future applications.</p>
+        </div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-dt">~Aug 2027</div>
+        <div class="tl-dot"></div>
+        <div class="tl-box">
+          <div class="tl-tag gppc">Award / Begin</div>
+          <h3>Award notification and earliest funding start</h3>
+          <p>If funded, you will receive a Notice of Award (NoA) through eRA Commons. Earliest start date for August submissions is typically the following August — a 12-month gap. Work with your advisor on bridge funding during this period. If not funded, your A1 resubmission can go in for the next deadline cycle.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESOURCES -->
+<section id="resources">
+  <div class="wrap">
+    <div class="lbl">Go Deeper</div>
+    <h2 class="sh">Key Resources</h2>
+    <p class="sub">Official NIH sources, application portals, searchable databases, and expert guides — organized by what you need.</p>
+    <div class="res-grid">
+      <a href="https://grants.nih.gov/funding/funding-categories/research-training-and-career-development/individual-fellowships" target="_blank" class="res">
+        <div class="res-tag">Official</div>
+        <h3>NIH Individual Fellowship Portal</h3>
+        <p>All F-series fellowships (F30, F31, F32, F99/K00) with current FOAs, deadlines, policy notices, and budget guidelines. Start here.</p>
+      </a>
+      <a href="https://reporter.nih.gov/" target="_blank" class="res">
+        <div class="res-tag">Research</div>
+        <h3>NIH Reporter</h3>
+        <p>Search all funded NIH grants and fellowships. Find funded F31s in your field, identify successful applications at comparable institutions, and understand what each IC funds.</p>
+      </a>
+      <a href="https://grants.nih.gov/grants/guide/pa-files/PA-25-422.html" target="_blank" class="res">
+        <div class="res-tag">Required Reading</div>
+        <h3>F31 Parent FOA (PA-25-422)</h3>
+        <p>The authoritative source for F31 requirements, eligibility, review criteria, and budget. Verify the current active FOA number — it is reissued periodically.</p>
+      </a>
+      <a href="https://www.training.nih.gov/research-training/grads/gpp/" target="_blank" class="res">
+        <div class="res-tag">GPP</div>
+        <h3>NIH GPP Official Page</h3>
+        <p>Graduate Partnerships Program overview, both pathways (individual and institutional), stipend table, eligibility, and links to the GPP Application Center.</p>
+      </a>
+      <a href="https://public.csr.nih.gov/ForApplicants/PlanningAndWriting" target="_blank" class="res">
+        <div class="res-tag">Writing</div>
+        <h3>NIH CSR: Planning &amp; Writing</h3>
+        <p>The Center for Scientific Review's applicant guide. Includes reviewer guidance, scoring criteria explanations, and how to understand your summary statement.</p>
+      </a>
+      <a href="https://grants.nih.gov/training/nrsa.htm" target="_blank" class="res">
+        <div class="res-tag">Budget</div>
+        <h3>NRSA Stipend Table</h3>
+        <p>Current FY2026 stipend levels for all NRSA mechanisms (F30, F31, F32, F33, and T32 trainees). Updated annually each October with the new fiscal year.</p>
+      </a>
+      <a href="https://manusights.com/resources/nih-f31-guide" target="_blank" class="res">
+        <div class="res-tag">Comprehensive</div>
+        <h3>Manusights F31 Guide</h3>
+        <p>A detailed, source-verified guide to the F31: application components, scoring, common mistakes, and resubmission strategy. Reviewed September 2026.</p>
+      </a>
+      <a href="https://medschool.vanderbilt.edu/career-development/2025/10/24/identifying-the-right-nih-funding-opportunity/" target="_blank" class="res">
+        <div class="res-tag">Decision</div>
+        <h3>Vanderbilt: Choosing the Right NIH Fellowship</h3>
+        <p>Excellent primer on F30/F31/F32/F99/K00 timing and decision-making from Vanderbilt's career development office. Peer-validated guidance applicable to any institution.</p>
+      </a>
+      <a href="https://grantsights.com/blog/nih-fellowship-grants-f31-f32" target="_blank" class="res">
+        <div class="res-tag">Deadlines</div>
+        <h3>Grantsights: F31 &amp; F32 2026 Guide</h3>
+        <p>Current FY2026 stipend figures, deadlines, and routing guide for the F31 and F32. Reviewed September 2026 against active NIH notices.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- GET HELP -->
+<section class="bg-navy" id="help">
+  <div class="wrap">
+    <div class="lbl">Support at Meharry</div>
+    <h2 class="sh">You Don't Have to Do This Alone</h2>
+    <p class="sub">The F31 application process is long, complex, and high-stakes. Every step below costs you less time than a rejected application.</p>
+    <div class="ct-grid">
+      <div class="ct-card">
+        <h3>SACS Faculty &amp; Research Mentor</h3>
+        <p>Your dissertation advisor is a scored criterion on your F31 — their sponsor statement and mentoring track record directly affect your score. Discuss the F31 with your advisor before you start writing. They should read and provide feedback on every draft.<br><br>
+        <a href="https://www.mmc.edu/academics/school-of-applied-computational-sciences/" target="_blank">mmc.edu/academics/sacs &#8599;</a></p>
+      </div>
+      <div class="ct-card">
+        <h3>Meharry Sponsored Research Office (SRO)</h3>
+        <p>Your SRO handles all institutional certifications, eRA Commons submissions, and compliance with NIH requirements. Contact them 2–3 months before your submission date — they have an internal deadline earlier than NIH's. They can also help identify which NIH IC to target.<br><br>
+        Contact: Meharry Office of Research — <a href="https://www.mmc.edu/research/" target="_blank">mmc.edu/research &#8599;</a></p>
+      </div>
+      <div class="ct-card">
+        <h3>Find a Recent F31 Awardee</h3>
+        <p>The most valuable preparation you can do: read a recently funded F31 in your research area. Search NIH Reporter for F31 awards in your field, then email the student or PI to ask if they would share their Specific Aims page. Most will. This is standard practice in biomedical research training.</p>
+      </div>
+      <div class="ct-card">
+        <h3>NIH Program Officer — Call Before You Apply</h3>
+        <p>Every NIH Institute has program officers who manage F31 portfolios. A 20-minute call can confirm your topic is appropriate for their IC, identify any format concerns, and occasionally surface internal priority areas. Find the contact for your target IC on their F31 funding page. Email first; ask for 15 minutes.<br><br>
+        <em>Most applicants skip this step. Don't.</em></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Meharry Medical College &mdash; School of Applied Computational Sciences &nbsp;&bull;&nbsp; Not affiliated with the National Institutes of Health &nbsp;&bull;&nbsp; <a href="https://grants.nih.gov/funding/funding-categories/research-training-and-career-development/individual-fellowships" target="_blank">Official NIH Fellowship Portal &#8599;</a></p>
+  <p style="margin-top:.4rem">Sources: <a href="https://grants.nih.gov/grants/guide/notice-files/NOT-OD-26-044.html" target="_blank">NOT-OD-26-044 (FY2026 stipends)</a> &bull; <a href="https://grants.nih.gov/grants/guide/pa-files/PA-25-422.html" target="_blank">PA-25-422 (Parent F31)</a> &bull; <a href="https://www.training.nih.gov/research-training/grads/gpp/" target="_blank">NIH GPP</a> &bull; <a href="https://manusights.com/resources/nih-f31-guide" target="_blank">Manusights F31 Guide</a> &bull; <a href="https://grants.nih.gov/news-events/nih-extramural-nexus-news/2026/07/declare-your-path-to-research-independence-through-the-nih-f99k00-funding-opportunity-perspectives-from-nih-institutes-and-centers" target="_blank">NIH F99/K00 July 2026</a></p>
+  <p style="margin-top:.3rem;font-size:.72rem">All stipend figures are FY2026. Fellowship program details change annually — verify all information against current NIH notices before applying.</p>
+</footer>
+
+<script>
+function stab(id, btn) {
+  document.querySelectorAll('.sec-pane').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.sec-tab').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>
